@@ -357,7 +357,7 @@
       text-transform: uppercase;
     }
 
-    /* ── STICKERS GRID (modal-like expanded) ── */
+    /* ── STICKERS GRID ── */
     .stickers-section {
       max-width: 1100px;
       margin: 0 auto;
@@ -399,6 +399,7 @@
       color: var(--text);
     }
 
+    /* ── STICKER CARDS CON IMAGEN ── */
     .stickers-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -408,31 +409,80 @@
     .sticker-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      padding: 1.5rem 1rem;
-      text-align: center;
+      overflow: hidden;
       transition: border-color 0.25s, transform 0.25s;
+      cursor: pointer;
     }
 
     .sticker-card:hover {
       border-color: var(--border-hover);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
     }
 
-    .sticker-emoji {
-      font-size: 2.5rem;
+    /* Imagen real desde Google Drive */
+    .sticker-img-wrap {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #161616;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sticker-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
       display: block;
-      margin-bottom: 0.75rem;
+      transition: transform 0.35s ease;
+      padding: 0.5rem;
+    }
+
+    .sticker-card:hover .sticker-img {
+      transform: scale(1.06);
+    }
+
+    /* Fallback emoji cuando no hay imagen */
+    .sticker-img-placeholder {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #161616;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+    }
+
+    /* Spinner de carga */
+    .sticker-img-wrap .loader {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #161616;
+      font-size: 1.5rem;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .sticker-img-wrap .loader.hidden { opacity: 0; }
+
+    .sticker-info {
+      padding: 0.85rem 1rem;
     }
 
     .sticker-name {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--text-mid);
       font-weight: 400;
+      margin-bottom: 0.35rem;
     }
 
     .sticker-badge {
       display: inline-block;
-      margin-top: 0.5rem;
       font-size: 0.6rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -569,7 +619,6 @@
     }
 
     .form-group textarea { resize: vertical; min-height: 100px; }
-
     .form-group select option { background: #111; }
 
     .wsp-btn {
@@ -672,6 +721,7 @@
       .nav-links { display: none; }
       .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
       footer { flex-direction: column; text-align: center; }
+      .stickers-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
     }
   </style>
 </head>
@@ -709,7 +759,6 @@
     </div>
 
     <div class="categories">
-      <!-- Filtros -->
       <div class="filter-bar">
         <button class="filter-btn active" onclick="filterCat('todos', this)">Todos</button>
         <button class="filter-btn" onclick="filterCat('animados', this)">Animados</button>
@@ -723,72 +772,61 @@
         <button class="filter-btn" onclick="filterCat('vintage', this)">Vintage</button>
       </div>
 
-      <!-- Cards de categoría -->
       <div class="cat-grid" id="catGrid">
-
         <div class="cat-card" data-cat="animados" onclick="showStickers('animados')">
           <span class="cat-count">Stock disponible</span>
           <span class="cat-icon">🎌</span>
           <div class="cat-name">Animados</div>
           <div class="cat-desc">Anime, cartoons y personajes animados de todos los estilos.</div>
         </div>
-
         <div class="cat-card" data-cat="argentina" onclick="showStickers('argentina')">
           <span class="cat-count">Stock disponible</span>
           <span class="cat-icon">🇦🇷</span>
           <div class="cat-name">Argentina General</div>
           <div class="cat-desc">Escudos, frases y símbolos patrios. Orgullo argentino en cada calco.</div>
         </div>
-
         <div class="cat-card" data-cat="basquet" onclick="showStickers('basquet')">
           <span class="cat-count">Stock disponible</span>
           <span class="cat-icon">🏀</span>
           <div class="cat-name">Básquet</div>
           <div class="cat-desc">NBA, básquet argentino, equipos y jugadores icónicos.</div>
         </div>
-
         <div class="cat-card" data-cat="f1" onclick="showStickers('f1')">
           <span class="cat-count">Stock disponible</span>
           <span class="cat-icon">🏎️</span>
           <div class="cat-name">Fórmula 1</div>
           <div class="cat-desc">Escuderías, cascos y leyendas de la Fórmula 1.</div>
         </div>
-
         <div class="cat-card" data-cat="futbol" onclick="showStickers('futbol')">
           <span class="cat-count">Stock disponible</span>
           <span class="cat-icon">⚽</span>
           <div class="cat-name">Fútbol</div>
           <div class="cat-desc">Clubes, selecciones y jugadores del fútbol local e internacional.</div>
         </div>
-
         <div class="cat-card" data-cat="girls" onclick="showStickers('girls')">
           <span class="cat-count">Stock disponible</span>
           <span class="cat-icon">🌸</span>
           <div class="cat-name">Girls</div>
           <div class="cat-desc">Diseños femeninos, floreados, ilustraciones y frases para ellas.</div>
         </div>
-
         <div class="cat-card" data-cat="marcas" onclick="showStickers('marcas')">
           <span class="cat-count">Stock disponible</span>
           <span class="cat-icon">⚡</span>
           <div class="cat-name">Marcas</div>
           <div class="cat-desc">Logos y diseños de marcas icónicas del streetwear y lifestyle.</div>
         </div>
-
         <div class="cat-card" data-cat="motors" onclick="showStickers('motors')">
           <span class="cat-count">Stock disponible</span>
           <span class="cat-icon">🏍️</span>
           <div class="cat-name">Motors</div>
           <div class="cat-desc">Autos clásicos, motos, cultura del asfalto y velocidad.</div>
         </div>
-
         <div class="cat-card" data-cat="vintage" onclick="showStickers('vintage')">
           <span class="cat-count">Stock disponible</span>
           <span class="cat-icon">📻</span>
           <div class="cat-name">Vintage General</div>
           <div class="cat-desc">Estética retro, colores vibrantes y diseños que no envejecen.</div>
         </div>
-
       </div>
     </div>
 
@@ -833,8 +871,6 @@
       </div>
 
       <div class="contact-grid">
-
-        <!-- Info -->
         <div class="contact-info">
           <h4>Guera Calcos</h4>
           <p>
@@ -843,14 +879,12 @@
             <a href="https://wa.me/3564204650" target="_blank" style="color:var(--gold);">→ Escribinos al WhatsApp</a><br>
             <a href="https://instagram.com/guera_calcos" target="_blank" style="color:var(--gold);">→ Seguinos en Instagram</a>
           </p>
-
-          <a href="https://wa.me/3564 204650?text=Hola%20Guera%20Calcos%2C%20vi%20el%20cat%C3%A1logo%20y%20quiero%20consultar%20un%20pedido%20%F0%9F%94%A5" target="_blank" class="wsp-btn" style="margin-top:1.5rem; text-decoration:none;">
+          <a href="https://wa.me/3564204650?text=Hola%20Guera%20Calcos%2C%20vi%20el%20cat%C3%A1logo%20y%20quiero%20consultar%20un%20pedido%20%F0%9F%94%A5" target="_blank" class="wsp-btn" style="margin-top:1.5rem; text-decoration:none;">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Escribir por WhatsApp
           </a>
         </div>
 
-        <!-- Formulario -->
         <form class="contact-form" onsubmit="handleForm(event)">
           <div class="form-group">
             <label>Tu nombre</label>
@@ -861,7 +895,7 @@
             <select>
               <option value="">Seleccioná...</option>
               <option>Animados</option>
-              <option>Argentina</option>
+              <option>Argentina General</option>
               <option>Básquet</option>
               <option>Fórmula 1</option>
               <option>Fútbol</option>
@@ -878,7 +912,6 @@
           </div>
           <button type="submit" class="submit-btn">Enviar consulta</button>
         </form>
-
       </div>
     </div>
   </section>
@@ -890,60 +923,88 @@
     <p>Hecho con 🤍 para vos</p>
   </footer>
 
-  <!-- TOAST -->
   <div class="toast" id="toast">¡Consulta enviada! Te respondo pronto 🤍</div>
 
   <script>
-    // ── Data de stickers por categoría ──
+    // ─────────────────────────────────────────────
+    //  DATOS DE STICKERS
+    //
+    //  Para agregar imagen de Google Drive:
+    //  1. Compartí el archivo como "Cualquier persona con el enlace"
+    //  2. Copiá el ID del link (la parte larga)
+    //     Ej: https://drive.google.com/file/d/  →ESTE_ES_EL_ID←  /view
+    //  3. Pegalo en el campo img así:
+    //     img: 'https://drive.google.com/uc?export=view&id=ESTE_ES_EL_ID'
+    //
+    //  Si un sticker no tiene imagen todavía, dejá img: '' y se mostrará el emoji.
+    // ─────────────────────────────────────────────
+
     const data = {
       animados: [
-        { name: 'Dragon Ball', e: '🐉' }, { name: 'Naruto', e: '🍃' },
-        { name: 'Rick & Morty', e: '🛸' }, { name: 'Simpsons', e: '🍩' },
-        { name: 'Pokémon', e: '⚡' },
+        { name: 'Dragon Ball',  e: '🐉', img: '' },
+        { name: 'Naruto',       e: '🍃', img: '' },
+        { name: 'Rick & Morty', e: '🛸', img: '' },
+        { name: 'Simpsons',     e: '🍩', img: '' },
+        { name: 'Pokémon',      e: '⚡', img: '' },
       ],
       argentina: [
-        { name: 'Mapa Argentina', e: '🗺️' }, { name: 'Frase Criolla', e: '🧉' },
-        { name: 'Mate', e: '🧉' }, { name: 'Gaucho', e: '🐎' },
-        { name: 'Provincias', e: '🌆' }, { name: 'Bandera', e: '🇦🇷' },
+        { name: 'Mapa Argentina', e: '🗺️', img: '' },
+        { name: 'Frase Criolla',  e: '🧉', img: '' },
+        { name: 'Mate',           e: '🧉', img: '' },
+        { name: 'Gaucho',         e: '🐎', img: '' },
+        { name: 'Provincias',     e: '🌆', img: '' },
+        { name: 'Bandera',        e: '🇦🇷', img: '' },
       ],
       basquet: [
-        { name: 'NBA Logo', e: '🏀' }, { name: 'NBA Jugadores', e: '⛹🏼‍♂️' },
-        { name: 'Básquet Argentino', e: '🇦🇷' },
-        { name: 'Cancha', e: '🏀' },
+        { name: 'NBA Logo',          e: '🏀', img: '' },
+        { name: 'NBA Jugadores',     e: '⛹🏼‍♂️', img: '' },
+        { name: 'Básquet Argentino', e: '🇦🇷', img: '' },
+        { name: 'Cancha',            e: '🏀', img: '' },
       ],
       motors: [
-        { name: 'Marcas', e: '🏁', img: 'https://drive.google.com/uc?export=view&id=b1d9d9844714567dd9ea105e157cc603' }, { name: 'Autos', e: '🚗' },
-        { name: 'Motos', e: '🏍️' },
+        { name: 'Marcas', e: '🏁', img: '</html>https://drive.google.com/uc?export=view&id=b1d9d9844714567dd9ea105e157cc603' },
+        { name: 'Autos',  e: '🚗', img: '' },
+        { name: 'Motos',  e: '🏍️', img: '' },
       ],
       futbol: [
-        { name: 'Boca Juniors', e: '💙' }, { name: 'River Plate', e: '❤️' },
-        { name: 'Selección Argentina', e: '🇦🇷' }, { name: 'Futbol argentino', e: '⚽' },
+        { name: 'Boca Juniors',       e: '💙', img: '' },
+        { name: 'River Plate',        e: '❤️', img: '' },
+        { name: 'Selección Argentina',e: '🇦🇷', img: '' },
+        { name: 'Fútbol argentino',   e: '⚽', img: '' },
       ],
       girls: [
-        { name: 'Flores', e: '🌸' }, { name: 'Mariposas', e: '🦋' },
-        { name: 'Good vibes', e: '💫' },
-        { name: 'Corazónes', e: '💕' }, { name: 'Coqueta', e: '💅' },
-        { name: 'Horoscopo', e: '♌' }, 
+        { name: 'Flores',     e: '🌸', img: '' },
+        { name: 'Mariposas',  e: '🦋', img: '' },
+        { name: 'Good vibes', e: '💫', img: '' },
+        { name: 'Corazones',  e: '💕', img: '' },
+        { name: 'Coqueta',    e: '💅', img: '' },
+        { name: 'Horóscopo',  e: '♌', img: '' },
       ],
       marcas: [
-        { name: 'Snacks', e: '🥤​' }, { name: 'Vestimenta', e: '🏷️' },
-        { name: 'Redes', e: '🌐​' },
+        { name: 'Snacks',     e: '🥤', img: '' },
+        { name: 'Vestimenta', e: '🏷️', img: '' },
+        { name: 'Redes',      e: '🌐', img: '' },
       ],
       f1: [
-        { name: 'Circuitos', e: '🔥' }, { name: 'Monoplazas', e: '🏎️' },
-        { name: 'Corredores', e: '⚡' },
+        { name: 'Circuitos',   e: '🔥', img: '' },
+        { name: 'Monoplazas',  e: '🏎️', img: '' },
+        { name: 'Corredores',  e: '⚡', img: '' },
       ],
       vintage: [
-        { name: 'Cassette', e: '📼' }, { name: 'Polaroid', e: '📷' },
-        { name: 'Música Retro', e: '🎵' }, { name: 'Neon 80s', e: '💜' },
-        { name: 'VHS', e: '📹' }, { name: 'Estrellas Retro', e: '⭐' },
-        { name: 'Vintage Pin', e: '📌' }, { name: 'Old School', e: '🖤' },
+        { name: 'Cassette',      e: '📼', img: '' },
+        { name: 'Polaroid',      e: '📷', img: '' },
+        { name: 'Música Retro',  e: '🎵', img: '' },
+        { name: 'Neon 80s',      e: '💜', img: '' },
+        { name: 'VHS',           e: '📹', img: '' },
+        { name: 'Estrellas Retro', e: '⭐', img: '' },
+        { name: 'Vintage Pin',   e: '📌', img: '' },
+        { name: 'Old School',    e: '🖤', img: '' },
       ],
     };
 
     const catNames = {
       animados: 'Animados',
-      argentina: 'Argentina',
+      argentina: 'Argentina General',
       basquet: 'Básquet',
       f1: 'Fórmula 1',
       futbol: 'Fútbol',
@@ -962,20 +1023,48 @@
       closeStickers();
     }
 
+    function buildStickerCard(s) {
+      if (s.img) {
+        // ── Con imagen de Google Drive ──
+        return `
+          <div class="sticker-card">
+            <div class="sticker-img-wrap">
+              <div class="loader" id="loader-${s.name.replace(/\s/g,'')}">⏳</div>
+              <img
+                class="sticker-img"
+                src="${s.img}"
+                alt="${s.name}"
+                loading="lazy"
+                onload="this.previousElementSibling.classList.add('hidden')"
+                onerror="this.parentElement.innerHTML='<div class=\\'sticker-img-placeholder\\'>${s.e}</div>'"
+              />
+            </div>
+            <div class="sticker-info">
+              <div class="sticker-name">${s.name}</div>
+              <span class="sticker-badge">Disponible</span>
+            </div>
+          </div>`;
+      } else {
+        // ── Sin imagen: muestra emoji ──
+        return `
+          <div class="sticker-card">
+            <div class="sticker-img-placeholder">${s.e}</div>
+            <div class="sticker-info">
+              <div class="sticker-name">${s.name}</div>
+              <span class="sticker-badge">Disponible</span>
+            </div>
+          </div>`;
+      }
+    }
+
     function showStickers(cat) {
-      const grid = document.getElementById('stickersGrid');
+      const grid  = document.getElementById('stickersGrid');
       const title = document.getElementById('stickersTitle');
-      const sec = document.getElementById('stickersSection');
+      const sec   = document.getElementById('stickersSection');
       const catGrid = document.getElementById('catGrid');
 
       title.textContent = catNames[cat] || cat;
-      grid.innerHTML = (data[cat] || []).map(s => `
-        <div class="sticker-card">
-          <span class="sticker-emoji">${s.e}</span>
-          <div class="sticker-name">${s.name}</div>
-          <span class="sticker-badge">Disponible</span>
-        </div>
-      `).join('');
+      grid.innerHTML = (data[cat] || []).map(buildStickerCard).join('');
 
       catGrid.style.display = 'none';
       document.querySelector('.filter-bar').style.display = 'none';
