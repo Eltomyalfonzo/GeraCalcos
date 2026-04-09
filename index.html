@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* ── NOISE OVERLAY ── */
     body::before {
       content: '';
       position: fixed;
@@ -45,7 +44,6 @@
       z-index: 0;
     }
 
-    /* ── NAV ── */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -68,14 +66,9 @@
       text-decoration: none;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
 
     .nav-links a {
-      font-family: 'DM Sans', sans-serif;
       font-size: 0.78rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -87,7 +80,6 @@
     .nav-links a:hover { color: var(--gold); }
 
     .nav-cta {
-      font-family: 'DM Sans', sans-serif;
       font-size: 0.75rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -98,12 +90,8 @@
       transition: background 0.25s, color 0.25s;
     }
 
-    .nav-cta:hover {
-      background: var(--gold);
-      color: #0a0a0a;
-    }
+    .nav-cta:hover { background: var(--gold); color: #0a0a0a; }
 
-    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -115,35 +103,19 @@
       position: relative;
     }
 
-    .hero-bg-lines {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
+    .hero-bg-lines { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
 
-    .hero-bg-lines::before,
-    .hero-bg-lines::after {
+    .hero-bg-lines::before, .hero-bg-lines::after {
       content: '';
       position: absolute;
       border-radius: 50%;
       border: 1px solid rgba(201,168,76,0.07);
     }
 
-    .hero-bg-lines::before {
-      width: 800px; height: 800px;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .hero-bg-lines::after {
-      width: 500px; height: 500px;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-    }
+    .hero-bg-lines::before { width: 800px; height: 800px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+    .hero-bg-lines::after  { width: 500px; height: 500px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
 
     .hero-eyebrow {
-      font-family: 'DM Sans', sans-serif;
       font-size: 0.7rem;
       letter-spacing: 0.35em;
       text-transform: uppercase;
@@ -158,18 +130,12 @@
       font-size: clamp(3.5rem, 10vw, 8rem);
       font-weight: 900;
       line-height: 0.95;
-      letter-spacing: -0.01em;
       color: var(--text);
       opacity: 0;
       animation: fadeUp 0.9s 0.4s forwards;
     }
 
-    .hero h1 span {
-      display: block;
-      color: var(--gold);
-      font-style: italic;
-      font-weight: 400;
-    }
+    .hero h1 span { display: block; color: var(--gold); font-style: italic; font-weight: 400; }
 
     .hero-sub {
       font-family: 'Cormorant Garamond', serif;
@@ -232,16 +198,9 @@
       animation: fadeIn 1s 1s forwards;
     }
 
-    /* ── SECTION ── */
-    section {
-      position: relative;
-      z-index: 1;
-    }
+    section { position: relative; z-index: 1; }
 
-    .section-header {
-      text-align: center;
-      padding: 5rem 2rem 3rem;
-    }
+    .section-header { text-align: center; padding: 5rem 2rem 3rem; }
 
     .section-label {
       font-size: 0.65rem;
@@ -258,12 +217,27 @@
       color: var(--text);
     }
 
-    /* ── CATEGORIES GRID ── */
-    .categories {
-      padding: 0 2rem 3rem;
-      max-width: 1100px;
-      margin: 0 auto;
+    /* Loading */
+    .catalog-loading {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
     }
+
+    .catalog-loading .spinner {
+      width: 32px; height: 32px;
+      border: 2px solid var(--border);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .categories { padding: 0 2rem 3rem; max-width: 1100px; margin: 0 auto; }
 
     .filter-bar {
       display: flex;
@@ -286,8 +260,7 @@
       transition: all 0.2s;
     }
 
-    .filter-btn:hover,
-    .filter-btn.active {
+    .filter-btn:hover, .filter-btn.active {
       background: var(--gold);
       color: #0a0a0a;
       border-color: var(--gold);
@@ -319,19 +292,10 @@
       transition: transform 0.3s;
     }
 
-    .cat-card:hover {
-      border-color: var(--border-hover);
-      background: var(--bg-card2);
-      transform: translateY(-3px);
-    }
-
+    .cat-card:hover { border-color: var(--border-hover); background: var(--bg-card2); transform: translateY(-3px); }
     .cat-card:hover::before { transform: scaleX(1); }
 
-    .cat-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
+    .cat-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
 
     .cat-name {
       font-family: 'Cinzel', serif;
@@ -342,11 +306,7 @@
       margin-bottom: 0.4rem;
     }
 
-    .cat-desc {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
+    .cat-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
 
     .cat-count {
       position: absolute;
@@ -357,14 +317,7 @@
       text-transform: uppercase;
     }
 
-    /* ── STICKERS GRID ── */
-    .stickers-section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 2rem 5rem;
-      display: none;
-    }
-
+    .stickers-section { max-width: 1100px; margin: 0 auto; padding: 0 2rem 5rem; display: none; }
     .stickers-section.visible { display: block; }
 
     .stickers-back {
@@ -393,13 +346,15 @@
       padding-bottom: 1.5rem;
     }
 
-    .stickers-title {
-      font-family: 'Cinzel', serif;
-      font-size: 1.8rem;
-      color: var(--text);
+    .stickers-title { font-family: 'Cinzel', serif; font-size: 1.8rem; color: var(--text); }
+
+    .stickers-count {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: var(--gold-dim);
+      text-transform: uppercase;
     }
 
-    /* ── STICKER CARDS CON IMAGEN ── */
     .stickers-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -414,12 +369,8 @@
       cursor: pointer;
     }
 
-    .sticker-card:hover {
-      border-color: var(--border-hover);
-      transform: translateY(-3px);
-    }
+    .sticker-card:hover { border-color: var(--border-hover); transform: translateY(-3px); }
 
-    /* Imagen real desde Google Drive */
     .sticker-img-wrap {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -435,51 +386,29 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+      padding: 0.75rem;
       display: block;
       transition: transform 0.35s ease;
-      padding: 0.5rem;
     }
 
-    .sticker-card:hover .sticker-img {
-      transform: scale(1.06);
-    }
+    .sticker-card:hover .sticker-img { transform: scale(1.06); }
 
-    /* Fallback emoji cuando no hay imagen */
-    .sticker-img-placeholder {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      background: #161616;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3rem;
-    }
-
-    /* Spinner de carga */
-    .sticker-img-wrap .loader {
+    .sticker-skeleton {
       position: absolute;
       inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #161616;
-      font-size: 1.5rem;
-      pointer-events: none;
-      transition: opacity 0.3s;
+      background: linear-gradient(90deg, #161616 25%, #1e1e1e 50%, #161616 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
     }
 
-    .sticker-img-wrap .loader.hidden { opacity: 0; }
-
-    .sticker-info {
-      padding: 0.85rem 1rem;
+    @keyframes shimmer {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
     }
 
-    .sticker-name {
-      font-size: 0.82rem;
-      color: var(--text-mid);
-      font-weight: 400;
-      margin-bottom: 0.35rem;
-    }
+    .sticker-info { padding: 0.85rem 1rem; }
+
+    .sticker-name { font-size: 0.82rem; color: var(--text-mid); font-weight: 400; margin-bottom: 0.35rem; }
 
     .sticker-badge {
       display: inline-block;
@@ -491,12 +420,7 @@
       padding: 0.15rem 0.5rem;
     }
 
-    /* ── PERSONALIZADA HIGHLIGHT ── */
-    .custom-banner {
-      max-width: 1100px;
-      margin: 0 auto 5rem;
-      padding: 0 2rem;
-    }
+    .custom-banner { max-width: 1100px; margin: 0 auto 5rem; padding: 0 2rem; }
 
     .custom-inner {
       border: 1px solid var(--border-hover);
@@ -522,79 +446,25 @@
       pointer-events: none;
     }
 
-    .custom-text h3 {
-      font-family: 'Cinzel', serif;
-      font-size: 1.4rem;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-    }
+    .custom-text h3 { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 0.5rem; }
+    .custom-text p  { font-size: 0.85rem; color: var(--text-muted); max-width: 420px; line-height: 1.7; }
 
-    .custom-text p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      max-width: 420px;
-      line-height: 1.7;
-    }
+    #contacto { background: var(--bg-card); border-top: 1px solid var(--border); }
 
-    /* ── CONTACTO ── */
-    #contacto {
-      background: var(--bg-card);
-      border-top: 1px solid var(--border);
-    }
+    .contact-wrap { max-width: 700px; margin: 0 auto; padding: 5rem 2rem; }
 
-    .contact-wrap {
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 5rem 2rem;
-    }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-top: 3rem;
-    }
-
-    .contact-info h4 {
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      color: var(--gold);
-      letter-spacing: 0.05em;
-      margin-bottom: 1rem;
-    }
-
-    .contact-info p {
-      font-size: 0.83rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-    }
-
-    .contact-info a {
-      color: var(--gold-dim);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
+    .contact-info h4 { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 1rem; }
+    .contact-info p  { font-size: 0.83rem; color: var(--text-muted); line-height: 1.8; }
+    .contact-info a  { color: var(--gold-dim); text-decoration: none; transition: color 0.2s; }
     .contact-info a:hover { color: var(--gold); }
 
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
+    .contact-form { display: flex; flex-direction: column; gap: 0.75rem; }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
+    .form-group { display: flex; flex-direction: column; gap: 0.3rem; }
 
-    .form-group label {
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
+    .form-group label { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); }
 
     .form-group input,
     .form-group textarea,
@@ -614,9 +484,7 @@
 
     .form-group input:focus,
     .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--gold-dim);
-    }
+    .form-group select:focus { border-color: var(--gold-dim); }
 
     .form-group textarea { resize: vertical; min-height: 100px; }
     .form-group select option { background: #111; }
@@ -640,10 +508,7 @@
       transition: background 0.25s, border-color 0.25s;
     }
 
-    .wsp-btn:hover {
-      background: rgba(37,211,102,0.1);
-      border-color: rgba(37,211,102,0.6);
-    }
+    .wsp-btn:hover { background: rgba(37,211,102,0.1); border-color: rgba(37,211,102,0.6); }
 
     .submit-btn {
       background: var(--gold);
@@ -662,7 +527,6 @@
 
     .submit-btn:hover { background: var(--gold-light); }
 
-    /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
       padding: 2rem 3rem;
@@ -673,20 +537,9 @@
       gap: 1rem;
     }
 
-    footer .logo {
-      font-family: 'Cinzel', serif;
-      font-size: 0.85rem;
-      color: var(--gold);
-      letter-spacing: 0.15em;
-    }
+    footer .logo { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--gold); letter-spacing: 0.15em; }
+    footer p { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.05em; }
 
-    footer p {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
-    }
-
-    /* ── TOAST ── */
     .toast {
       position: fixed;
       bottom: 2rem; right: 2rem;
@@ -704,7 +557,6 @@
 
     .toast.show { transform: translateY(0); opacity: 1; }
 
-    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -715,7 +567,6 @@
       to   { opacity: 1; }
     }
 
-    /* ── MOBILE ── */
     @media (max-width: 768px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
@@ -727,7 +578,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">GUERA CALCOS</a>
     <ul class="nav-links">
@@ -738,7 +588,6 @@
     <a href="#contacto" class="nav-cta">Pedir ahora</a>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-bg-lines"></div>
     <p class="hero-eyebrow">Calcomanías artesanales · Córdoba, Argentina</p>
@@ -751,7 +600,6 @@
     <div class="hero-divider"></div>
   </section>
 
-  <!-- CATÁLOGO -->
   <section id="catalogo">
     <div class="section-header">
       <p class="section-label">Todo el stock disponible</p>
@@ -759,98 +607,35 @@
     </div>
 
     <div class="categories">
-      <div class="filter-bar">
+      <div class="filter-bar" id="filterBar">
         <button class="filter-btn active" onclick="filterCat('todos', this)">Todos</button>
-        <button class="filter-btn" onclick="filterCat('animados', this)">Animados</button>
-        <button class="filter-btn" onclick="filterCat('argentina', this)">Argentina</button>
-        <button class="filter-btn" onclick="filterCat('basquet', this)">Básquet</button>
-        <button class="filter-btn" onclick="filterCat('f1', this)">F1</button>
-        <button class="filter-btn" onclick="filterCat('futbol', this)">Fútbol</button>
-        <button class="filter-btn" onclick="filterCat('girls', this)">Girls</button>
-        <button class="filter-btn" onclick="filterCat('marcas', this)">Marcas</button>
-        <button class="filter-btn" onclick="filterCat('motors', this)">Motors</button>
-        <button class="filter-btn" onclick="filterCat('vintage', this)">Vintage</button>
       </div>
 
-      <div class="cat-grid" id="catGrid">
-        <div class="cat-card" data-cat="animados" onclick="showStickers('animados')">
-          <span class="cat-count">Stock disponible</span>
-          <span class="cat-icon">🎌</span>
-          <div class="cat-name">Animados</div>
-          <div class="cat-desc">Anime, cartoons y personajes animados de todos los estilos.</div>
-        </div>
-        <div class="cat-card" data-cat="argentina" onclick="showStickers('argentina')">
-          <span class="cat-count">Stock disponible</span>
-          <span class="cat-icon">🇦🇷</span>
-          <div class="cat-name">Argentina General</div>
-          <div class="cat-desc">Escudos, frases y símbolos patrios. Orgullo argentino en cada calco.</div>
-        </div>
-        <div class="cat-card" data-cat="basquet" onclick="showStickers('basquet')">
-          <span class="cat-count">Stock disponible</span>
-          <span class="cat-icon">🏀</span>
-          <div class="cat-name">Básquet</div>
-          <div class="cat-desc">NBA, básquet argentino, equipos y jugadores icónicos.</div>
-        </div>
-        <div class="cat-card" data-cat="f1" onclick="showStickers('f1')">
-          <span class="cat-count">Stock disponible</span>
-          <span class="cat-icon">🏎️</span>
-          <div class="cat-name">Fórmula 1</div>
-          <div class="cat-desc">Escuderías, cascos y leyendas de la Fórmula 1.</div>
-        </div>
-        <div class="cat-card" data-cat="futbol" onclick="showStickers('futbol')">
-          <span class="cat-count">Stock disponible</span>
-          <span class="cat-icon">⚽</span>
-          <div class="cat-name">Fútbol</div>
-          <div class="cat-desc">Clubes, selecciones y jugadores del fútbol local e internacional.</div>
-        </div>
-        <div class="cat-card" data-cat="girls" onclick="showStickers('girls')">
-          <span class="cat-count">Stock disponible</span>
-          <span class="cat-icon">🌸</span>
-          <div class="cat-name">Girls</div>
-          <div class="cat-desc">Diseños femeninos, floreados, ilustraciones y frases para ellas.</div>
-        </div>
-        <div class="cat-card" data-cat="marcas" onclick="showStickers('marcas')">
-          <span class="cat-count">Stock disponible</span>
-          <span class="cat-icon">⚡</span>
-          <div class="cat-name">Marcas</div>
-          <div class="cat-desc">Logos y diseños de marcas icónicas del streetwear y lifestyle.</div>
-        </div>
-        <div class="cat-card" data-cat="motors" onclick="showStickers('motors')">
-          <span class="cat-count">Stock disponible</span>
-          <span class="cat-icon">🏍️</span>
-          <div class="cat-name">Motors</div>
-          <div class="cat-desc">Autos clásicos, motos, cultura del asfalto y velocidad.</div>
-        </div>
-        <div class="cat-card" data-cat="vintage" onclick="showStickers('vintage')">
-          <span class="cat-count">Stock disponible</span>
-          <span class="cat-icon">📻</span>
-          <div class="cat-name">Vintage General</div>
-          <div class="cat-desc">Estética retro, colores vibrantes y diseños que no envejecen.</div>
-        </div>
+      <div class="catalog-loading" id="catalogLoading">
+        <div class="spinner"></div>
+        Cargando catálogo...
       </div>
+
+      <div class="cat-grid" id="catGrid" style="display:none;"></div>
     </div>
 
-    <!-- Vista de stickers expandida -->
     <div class="stickers-section" id="stickersSection">
       <button class="stickers-back" onclick="closeStickers()">← Volver al catálogo</button>
       <div class="stickers-header">
         <h3 class="stickers-title" id="stickersTitle"></h3>
+        <span class="stickers-count" id="stickersCount"></span>
       </div>
-
       <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1.5rem; line-height:1.8;">
         ¿Te interesa algún diseño? Contactame por WhatsApp o completá el formulario abajo y te cuento precio y disponibilidad. 🤍
       </p>
-
       <div class="stickers-grid" id="stickersGrid"></div>
-
-      <div style="margin-top: 2rem; display:flex; gap:1rem; flex-wrap:wrap;">
+      <div style="margin-top:2rem; display:flex; gap:1rem; flex-wrap:wrap;">
         <a href="#contacto" class="btn-primary">Consultar por este diseño</a>
       </div>
     </div>
   </section>
 
-  <!-- PERSONALIZADAS -->
-  <section id="personalizadas" style="padding-bottom: 3rem;">
+  <section id="personalizadas" style="padding-bottom:3rem;">
     <div class="custom-banner">
       <div class="custom-inner">
         <div class="custom-text">
@@ -862,14 +647,12 @@
     </div>
   </section>
 
-  <!-- CONTACTO -->
   <section id="contacto">
     <div class="contact-wrap">
       <div class="section-header" style="padding-top:0;">
         <p class="section-label">Estamos para vos</p>
         <h2 class="section-title">Contacto & Pedidos</h2>
       </div>
-
       <div class="contact-grid">
         <div class="contact-info">
           <h4>Guera Calcos</h4>
@@ -892,18 +675,8 @@
           </div>
           <div class="form-group">
             <label>Categoría que te interesa</label>
-            <select>
+            <select id="contactSelect">
               <option value="">Seleccioná...</option>
-              <option>Animados</option>
-              <option>Argentina General</option>
-              <option>Básquet</option>
-              <option>Fórmula 1</option>
-              <option>Fútbol</option>
-              <option>Girls</option>
-              <option>Marcas</option>
-              <option>Motors</option>
-              <option>Vintage General</option>
-              <option>Personalizada</option>
             </select>
           </div>
           <div class="form-group">
@@ -916,7 +689,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <footer>
     <span class="logo">GUERA CALCOS</span>
     <p>Calcomanías únicas · Córdoba, Argentina</p>
@@ -927,157 +699,215 @@
 
   <script>
     // ─────────────────────────────────────────────
-    //  DATOS DE STICKERS
-    //
-    //  Para agregar imagen de Google Drive:
-    //  1. Compartí el archivo como "Cualquier persona con el enlace"
-    //  2. Copiá el ID del link (la parte larga)
-    //     Ej: https://drive.google.com/file/d/  →ESTE_ES_EL_ID←  /view
-    //  3. Pegalo en el campo img así:
-    //     img: 'https://drive.google.com/uc?export=view&id=ESTE_ES_EL_ID'
-    //
-    //  Si un sticker no tiene imagen todavía, dejá img: '' y se mostrará el emoji.
+    //  CONFIGURACIÓN — solo tocá esta parte
     // ─────────────────────────────────────────────
+    const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTRTL0Mpj-YsHBFn6rJlkpLmcKakFGHc1YC8liFgRriXUj5OTvlsb_4dzONJ8Bvn47LtEy-1K3irz1g/pub?gid=0&single=true&output=csv';
 
-    const data = {
-      animados: [
-        { name: 'Dragon Ball',  e: '🐉', img: '' },
-        { name: 'Naruto',       e: '🍃', img: '' },
-        { name: 'Rick & Morty', e: '🛸', img: '' },
-        { name: 'Simpsons',     e: '🍩', img: '' },
-        { name: 'Pokémon',      e: '⚡', img: '' },
-      ],
-      argentina: [
-        { name: 'Mapa Argentina', e: '🗺️', img: '' },
-        { name: 'Frase Criolla',  e: '🧉', img: '' },
-        { name: 'Mate',           e: '🧉', img: '' },
-        { name: 'Gaucho',         e: '🐎', img: '' },
-        { name: 'Provincias',     e: '🌆', img: '' },
-        { name: 'Bandera',        e: '🇦🇷', img: '' },
-      ],
-      basquet: [
-        { name: 'NBA Logo',          e: '🏀', img: '' },
-        { name: 'NBA Jugadores',     e: '⛹🏼‍♂️', img: '' },
-        { name: 'Básquet Argentino', e: '🇦🇷', img: '' },
-        { name: 'Cancha',            e: '🏀', img: '' },
-      ],
-      motors: [
-        { name: 'Marcas', e: '🏁', img: '</html>https://drive.google.com/uc?export=view&id=b1d9d9844714567dd9ea105e157cc603' },
-        { name: 'Autos',  e: '🚗', img: '' },
-        { name: 'Motos',  e: '🏍️', img: '' },
-      ],
-      futbol: [
-        { name: 'Boca Juniors',       e: '💙', img: '' },
-        { name: 'River Plate',        e: '❤️', img: '' },
-        { name: 'Selección Argentina',e: '🇦🇷', img: '' },
-        { name: 'Fútbol argentino',   e: '⚽', img: '' },
-      ],
-      girls: [
-        { name: 'Flores',     e: '🌸', img: '' },
-        { name: 'Mariposas',  e: '🦋', img: '' },
-        { name: 'Good vibes', e: '💫', img: '' },
-        { name: 'Corazones',  e: '💕', img: '' },
-        { name: 'Coqueta',    e: '💅', img: '' },
-        { name: 'Horóscopo',  e: '♌', img: '' },
-      ],
-      marcas: [
-        { name: 'Snacks',     e: '🥤', img: '' },
-        { name: 'Vestimenta', e: '🏷️', img: '' },
-        { name: 'Redes',      e: '🌐', img: '' },
-      ],
-      f1: [
-        { name: 'Circuitos',   e: '🔥', img: '' },
-        { name: 'Monoplazas',  e: '🏎️', img: '' },
-        { name: 'Corredores',  e: '⚡', img: '' },
-      ],
-      vintage: [
-        { name: 'Cassette',      e: '📼', img: '' },
-        { name: 'Polaroid',      e: '📷', img: '' },
-        { name: 'Música Retro',  e: '🎵', img: '' },
-        { name: 'Neon 80s',      e: '💜', img: '' },
-        { name: 'VHS',           e: '📹', img: '' },
-        { name: 'Estrellas Retro', e: '⭐', img: '' },
-        { name: 'Vintage Pin',   e: '📌', img: '' },
-        { name: 'Old School',    e: '🖤', img: '' },
-      ],
+    // Ícono y descripción para cada categoría
+    const catMeta = {
+      animados:  { icon: '🎌', desc: 'Anime, cartoons y personajes animados de todos los estilos.' },
+      futbol:    { icon: '⚽', desc: 'Clubes, selecciones y jugadores del fútbol local e internacional.' },
+      f1:        { icon: '🏎️', desc: 'Escuderías, cascos y leyendas de la Fórmula 1.' },
+      basquet:   { icon: '🏀', desc: 'NBA, básquet argentino, equipos y jugadores icónicos.' },
+      girls:     { icon: '🌸', desc: 'Diseños femeninos, floreados, ilustraciones y frases para ellas.' },
+      marcas:    { icon: '⚡', desc: 'Logos y diseños de marcas icónicas del streetwear y lifestyle.' },
+      motors:    { icon: '🏍️', desc: 'Autos clásicos, motos, cultura del asfalto y velocidad.' },
+      argentina: { icon: '🇦🇷', desc: 'Escudos, frases y símbolos patrios. Orgullo argentino en cada calco.' },
+      vintage:   { icon: '📻', desc: 'Estética retro, colores vibrantes y diseños que no envejecen.' },
     };
 
-    const catNames = {
-      animados: 'Animados',
+    // Nombre visible para cada categoría
+    const catLabels = {
+      animados:  'Animados',
+      futbol:    'Fútbol',
+      f1:        'Fórmula 1',
+      basquet:   'Básquet',
+      girls:     'Girls',
+      marcas:    'Marcas',
+      motors:    'Motors',
       argentina: 'Argentina General',
-      basquet: 'Básquet',
-      f1: 'Fórmula 1',
-      futbol: 'Fútbol',
-      girls: 'Girls',
-      marcas: 'Marcas',
-      motors: 'Motors',
-      vintage: 'Vintage General',
+      vintage:   'Vintage General',
     };
 
-    function filterCat(cat, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.querySelectorAll('.cat-card').forEach(card => {
-        card.style.display = (cat === 'todos' || card.dataset.cat === cat) ? '' : 'none';
-      });
-      closeStickers();
+    // ─────────────────────────────────────────────
+    //  ESTADO
+    // ─────────────────────────────────────────────
+    let catalogData = {};
+
+    // ─────────────────────────────────────────────
+    //  PARSEAR CSV
+    // ─────────────────────────────────────────────
+    function parseCSV(text) {
+      const lines = text.trim().split('\n');
+      const headers = lines[0].split(',').map(h => h.trim().toLowerCase().replace(/\r/g, ''));
+      const rows = [];
+      for (let i = 1; i < lines.length; i++) {
+        const cols = lines[i].split(',').map(c => c.trim().replace(/\r/g, ''));
+        if (!cols[0]) continue;
+        const obj = {};
+        headers.forEach((h, idx) => obj[h] = cols[idx] || '');
+        if (obj.categoria && obj.nombre) rows.push(obj);
+      }
+      return rows;
     }
 
-    function buildStickerCard(s) {
-      if (s.img) {
-        // ── Con imagen de Google Drive ──
+    function groupByCategory(rows) {
+      const grouped = {};
+      rows.forEach(row => {
+        const cat = row.categoria.toLowerCase().trim();
+        if (!grouped[cat]) grouped[cat] = [];
+        grouped[cat].push({ nombre: row.nombre, imagen_id: row.imagen_id || '' });
+      });
+      return grouped;
+    }
+
+    // ─────────────────────────────────────────────
+    //  RENDER CATEGORÍAS
+    // ─────────────────────────────────────────────
+    function renderCategories(filter) {
+      const grid = document.getElementById('catGrid');
+      const cats = Object.keys(catalogData);
+      const filtered = filter === 'todos' ? cats : cats.filter(c => c === filter);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<p style="color:var(--text-muted); font-size:0.85rem;">No hay productos en esta categoría todavía.</p>';
+        return;
+      }
+
+      grid.innerHTML = filtered.map(cat => {
+        const meta  = catMeta[cat]   || { icon: '📦', desc: '' };
+        const label = catLabels[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1));
+        const count = catalogData[cat].length;
         return `
-          <div class="sticker-card">
-            <div class="sticker-img-wrap">
-              <div class="loader" id="loader-${s.name.replace(/\s/g,'')}">⏳</div>
-              <img
-                class="sticker-img"
-                src="${s.img}"
-                alt="${s.name}"
-                loading="lazy"
-                onload="this.previousElementSibling.classList.add('hidden')"
-                onerror="this.parentElement.innerHTML='<div class=\\'sticker-img-placeholder\\'>${s.e}</div>'"
-              />
-            </div>
-            <div class="sticker-info">
-              <div class="sticker-name">${s.name}</div>
-              <span class="sticker-badge">Disponible</span>
-            </div>
+          <div class="cat-card" data-cat="${cat}" onclick="showStickers('${cat}')">
+            <span class="cat-count">${count} diseño${count !== 1 ? 's' : ''}</span>
+            <span class="cat-icon">${meta.icon}</span>
+            <div class="cat-name">${label}</div>
+            <div class="cat-desc">${meta.desc}</div>
           </div>`;
-      } else {
-        // ── Sin imagen: muestra emoji ──
-        return `
-          <div class="sticker-card">
-            <div class="sticker-img-placeholder">${s.e}</div>
-            <div class="sticker-info">
-              <div class="sticker-name">${s.name}</div>
-              <span class="sticker-badge">Disponible</span>
-            </div>
-          </div>`;
+      }).join('');
+    }
+
+    // ─────────────────────────────────────────────
+    //  RENDER FILTROS
+    // ─────────────────────────────────────────────
+    function renderFilters() {
+      const bar = document.getElementById('filterBar');
+      bar.innerHTML = `<button class="filter-btn active" onclick="filterCat('todos', this)">Todos</button>`;
+      Object.keys(catalogData).forEach(cat => {
+        const label = catLabels[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1));
+        bar.innerHTML += `<button class="filter-btn" onclick="filterCat('${cat}', this)">${label}</button>`;
+      });
+    }
+
+    // ─────────────────────────────────────────────
+    //  RENDER SELECT CONTACTO
+    // ─────────────────────────────────────────────
+    function renderContactSelect() {
+      const sel = document.getElementById('contactSelect');
+      sel.innerHTML = '<option value="">Seleccioná...</option>';
+      Object.keys(catalogData).forEach(cat => {
+        const label = catLabels[cat] || (cat.charAt(0).toUpperCase() + cat.slice(1));
+        sel.innerHTML += `<option value="${cat}">${label}</option>`;
+      });
+      sel.innerHTML += '<option value="personalizada">Personalizada</option>';
+    }
+
+    // ─────────────────────────────────────────────
+    //  CARGAR DESDE GOOGLE SHEETS
+    // ─────────────────────────────────────────────
+    async function loadCatalog() {
+      try {
+        const res  = await fetch(SHEET_CSV_URL);
+        const text = await res.text();
+        const rows = parseCSV(text);
+        catalogData = groupByCategory(rows);
+
+        document.getElementById('catalogLoading').style.display = 'none';
+        document.getElementById('catGrid').style.display = '';
+
+        renderFilters();
+        renderCategories('todos');
+        renderContactSelect();
+
+      } catch (err) {
+        document.getElementById('catalogLoading').innerHTML =
+          '<p style="color:var(--text-muted); font-size:0.85rem;">No se pudo cargar el catálogo. Revisá tu conexión y recargá la página.</p>';
+        console.error('Error cargando el catálogo:', err);
       }
     }
 
+    // ─────────────────────────────────────────────
+    //  FILTRAR
+    // ─────────────────────────────────────────────
+    function filterCat(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderCategories(cat);
+      closeStickers();
+    }
+
+    // ─────────────────────────────────────────────
+    //  MOSTRAR STICKERS
+    // ─────────────────────────────────────────────
     function showStickers(cat) {
-      const grid  = document.getElementById('stickersGrid');
-      const title = document.getElementById('stickersTitle');
-      const sec   = document.getElementById('stickersSection');
-      const catGrid = document.getElementById('catGrid');
+      const stickers = catalogData[cat] || [];
+      const label    = catLabels[cat] || cat;
 
-      title.textContent = catNames[cat] || cat;
-      grid.innerHTML = (data[cat] || []).map(buildStickerCard).join('');
+      document.getElementById('stickersTitle').textContent = label;
+      document.getElementById('stickersCount').textContent =
+        `${stickers.length} diseño${stickers.length !== 1 ? 's' : ''}`;
 
-      catGrid.style.display = 'none';
+      const grid = document.getElementById('stickersGrid');
+      grid.innerHTML = stickers.map((s, i) => {
+        const skId  = `sk_${cat}_${i}`;
+        const imgUrl = s.imagen_id
+          ? `https://drive.google.com/uc?export=view&id=${s.imagen_id}`
+          : '';
+
+        return `
+          <div class="sticker-card">
+            <div class="sticker-img-wrap">
+              ${imgUrl
+                ? `<div class="sticker-skeleton" id="${skId}"></div>
+                   <img
+                     class="sticker-img"
+                     src="${imgUrl}"
+                     alt="${s.nombre}"
+                     loading="lazy"
+                     style="position:absolute;inset:0;"
+                     onload="var el=document.getElementById('${skId}');if(el)el.remove();this.style.position='relative';"
+                     onerror="this.parentElement.innerHTML='<div style=width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;>📦</div>';"
+                   />`
+                : `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;">📦</div>`
+              }
+            </div>
+            <div class="sticker-info">
+              <div class="sticker-name">${s.nombre}</div>
+              <span class="sticker-badge">Disponible</span>
+            </div>
+          </div>`;
+      }).join('');
+
+      document.getElementById('catGrid').style.display = 'none';
       document.querySelector('.filter-bar').style.display = 'none';
+      const sec = document.getElementById('stickersSection');
       sec.classList.add('visible');
       sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
+    // ─────────────────────────────────────────────
+    //  VOLVER
+    // ─────────────────────────────────────────────
     function closeStickers() {
       document.getElementById('stickersSection').classList.remove('visible');
       document.getElementById('catGrid').style.display = '';
       document.querySelector('.filter-bar').style.display = '';
     }
 
+    // ─────────────────────────────────────────────
+    //  FORMULARIO
+    // ─────────────────────────────────────────────
     function handleForm(e) {
       e.preventDefault();
       const toast = document.getElementById('toast');
@@ -1085,6 +915,11 @@
       setTimeout(() => toast.classList.remove('show'), 3500);
       e.target.reset();
     }
+
+    // ─────────────────────────────────────────────
+    //  INIT
+    // ─────────────────────────────────────────────
+    loadCatalog();
   </script>
 </body>
 </html>
