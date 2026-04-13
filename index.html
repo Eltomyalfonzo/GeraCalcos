@@ -877,11 +877,25 @@
     }
 
     function handleForm(e) {
-      e.preventDefault();
-      const toast = document.getElementById('toast');
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 3500);
-      e.target.reset();
+  e.preventDefault();
+
+  const nombre    = e.target.querySelector('input[type="text"]').value.trim();
+  const categoria = e.target.querySelector('select').value;
+  const consulta  = e.target.querySelector('textarea').value.trim();
+
+  const catLabel = catLabels[categoria] || categoria || 'No especificada';
+
+  const mensaje = `Hola Guera Calcos! 👋
+
+*Nombre:* ${nombre}
+*Categoría:* ${catLabel}
+*Consulta:* ${consulta}`;
+
+  const url = `https://wa.me/5493564204650?text=${encodeURIComponent(mensaje)}`;
+  window.open(url, '_blank');
+
+  e.target.reset();
+}
     }
 
     loadCatalog();
